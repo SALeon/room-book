@@ -1,6 +1,8 @@
-const merge = require('webpack-merge');
 const path = require('path');
 const nodeSass = require('node-sass');
+const dotenv = require('dotenv').config({ path: `${__dirname}/config/dev.env` });
+const { DefinePlugin } = require('webpack');
+const merge = require('webpack-merge');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -30,6 +32,12 @@ module.exports = merge(common, {
   devServer: {
     contentBase: [path.join(__dirname, './dist')],
     compress: true,
+    port: process.env.PORT,
     hot: true
-  }
+  },
+  plugins: [
+    new DefinePlugin({
+      'process.env': dotenv.parsed
+    })
+  ]
 });
