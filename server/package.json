@@ -9,7 +9,7 @@
     "init": "cd .. && docker-compose up",
     "mongo-start": "docker start -i mongo_db",
     "mongo-stop": "docker stop mongo_db",
-    "eslint-fix": "../node_modules/.bin/eslint --fix ./src --ext .js"
+    "eslint-fix": "../node_modules/.bin/eslint --fix ./ --ext .js"
   },
   "repository": {
     "type": "git",
