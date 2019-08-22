@@ -1,0 +1,8 @@
+FROM node:alpine
+WORKDIR '/room-book'
+COPY ./package.json ./
+
+RUN npm i
+COPY . .
+
+CMD ["npm", "start"]
