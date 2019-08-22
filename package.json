@@ -1,0 +1,46 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "npm-i":"cd client && npm i && cd .. && cd server && npm i && cd ..",
+    "dev": "cd client && npm ru n dev && cd .. && cd server && npm run dev && cd ..",
+    "fix-client": "cd client && npm run eslint-fix && cd ..",
+    "fix-client-styles": "cd client && npm run style-lint-fix && cd ..",
+    "fix-server": "cd client && npm run eslint-fix && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://leon_sab@bitbucket.org/leon_sab/room-book.git"
+  },
+  "author": "Siarhei Leanavets",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/leon_sab/room-book#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "npm run fix-client",
+      "npm run fix-server",
+      "git add"
+    ],
+    "*.{scss}": [
+      "npm run fix-client-styles",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=11.6.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2"
+  }
+}
