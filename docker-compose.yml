@@ -10,3 +10,10 @@ services:
       - 27017:27017
     volumes:
       - ./server/database/mongoDB/db-init/:/docker-entrypoint-initdb.d
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3050:80

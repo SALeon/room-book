@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "npm-i":"cd client && npm i && cd .. && cd server && npm i && cd ..",
-    "dev": "cd client && npm ru n dev && cd .. && cd server && npm run dev && cd ..",
     "fix-client": "cd client && npm run eslint-fix && cd ..",
     "fix-client-styles": "cd client && npm run style-lint-fix && cd ..",
     "fix-server": "cd server && npm run eslint-fix && cd ..",
