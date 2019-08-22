@@ -8,7 +8,8 @@
     "dev": "cd client && npm ru n dev && cd .. && cd server && npm run dev && cd ..",
     "fix-client": "cd client && npm run eslint-fix && cd ..",
     "fix-client-styles": "cd client && npm run style-lint-fix && cd ..",
-    "fix-server": "cd server && npm run eslint-fix && cd .."
+    "fix-server": "cd server && npm run eslint-fix && cd ..",
+    "tests": "cd client && npm run test && cd .."
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,8 @@
   "homepage": "https://bitbucket.org/leon_sab/room-book#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run tests"
     }
   },
   "lint-staged": {
