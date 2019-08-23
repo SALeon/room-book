@@ -1,0 +1,5 @@
+FROM node as builder
+WORKDIR '/room-book'
+COPY ./package.json ./
+RUN npm i
+COPY . .
