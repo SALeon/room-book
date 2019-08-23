@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "DEV=true MONGO_HOST=\"localhost\" nodemon -r dotenv/config --inspect ./src/index.js dotenv_config_path=./config/.env",
-    "start": "MONGO_HOST=\"localhost\" node -r dotenv/config ./src/index.js dotenv_config_path=./config/.env",
+    "start": "node ./src/index.js",
+
     "init": "cd .. && docker-compose up",
     "mongo-start": "docker start -i mongo_db",
     "mongo-stop": "docker stop mongo_db",

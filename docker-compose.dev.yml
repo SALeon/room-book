@@ -5,7 +5,7 @@ services:
     image: 'mongo'
     restart: always
     env_file:
-      ./server/docker/mongoDB.env
+      ./server/config/mongoDB.env
     ports:
       - 27017:27017
     volumes:
@@ -13,7 +13,7 @@ services:
   nginx:
     restart: always
     build:
-      context: ./nginx
-      dockerfile: Dockerfile.dev
+      context: ./proxy-router/nginx
+      dockerfile: ../docker/Dockerfile.dev
     ports:
       - 3050:80

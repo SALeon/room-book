@@ -1,8 +1,8 @@
-FROM node:alpine
-WORKDIR '/room-book'
+FROM node
+WORKDIR /room-book
 COPY ./package.json ./
 
-RUN npm i
+RUN npm i --production
 COPY . .
 
 CMD ["npm", "start"]
