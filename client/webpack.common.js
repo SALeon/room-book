@@ -1,10 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const styleLintFormatter = require('stylelint-formatter-pretty');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: {
     app: './src/index.js'
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist')
   },
   resolve: {
     extensions: ['*', '.js', '.jsx']
@@ -36,15 +40,19 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Room book',
-      template: `${__dirname}/src/index.html`
-    }),
-    new StyleLintPlugin({
-      configFile: '.stylelintrc',
-      context: 'src',
-      files: ['**/*.scss'],
-      formatter: styleLintFormatter
+      template: `${__dirname}/src/index.html`,
+      minify: {
+        collapseWhitespace: true,
+        html5: true,
+        minifyJS: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        sortAttributes: true,
+        useShortDoctype: true
+      }
     })
   ]
 };

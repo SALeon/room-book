@@ -1,5 +1,7 @@
 const path = require('path');
 const nodeSass = require('node-sass');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const styleLintFormatter = require('stylelint-formatter-pretty');
 const dotenv = require('dotenv').config({ path: `${__dirname}/config/dev.env` });
 const { DefinePlugin } = require('webpack');
 const merge = require('webpack-merge');
@@ -38,6 +40,12 @@ module.exports = merge(common, {
   plugins: [
     new DefinePlugin({
       'process.env': dotenv.parsed
+    }),
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: ['**/*.scss'],
+      formatter: styleLintFormatter
     })
   ]
 });
