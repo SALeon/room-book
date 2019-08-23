@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  mongo:
+    container_name: mongo_db
+    image: 'mongo'
+    restart: always
+    env_file:
+      ./server/config/mongoDB.env
+    volumes:
+      - ./server/database/mongoDB/db-init/:/docker-entrypoint-initdb.d
+  proxy-router:
+    restart: always
+    build:
+      context: ./proxy-router
+    ports:
+      - 3050:80
+  client:
+    restart: always
+    build:
+      context: ./client
+  api:
+    restart: always
+    build:
+      context: ./server
+    env_file:
+      ./server/config/.env

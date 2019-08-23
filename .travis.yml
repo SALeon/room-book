@@ -1,0 +1,21 @@
+sudo: required
+language: node_js
+services:
+  - docker
+
+before_install:
+  - docker build -t "$DOCKER_ID"/client-test -f ./client/Dockerfile_test ./client
+
+script:
+  - docker run "$DOCKER_ID"/client-test npm test -- --coverage
+
+after_success:
+  - docker build -t "$DOCKER_ID"/"$PROJECT"-client ./client
+  - docker build -t "$DOCKER_ID"/"$PROJECT"-proxy-router ./proxy-router
+  - docker build -t "$DOCKER_ID"/"$PROJECT"-server ./server
+  #Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"  --password-stdin
+  #Take those images and push them to docker hub
+  - docker push "$DOCKER_ID"/"$PROJECT"-client
+  - docker push "$DOCKER_ID"/"$PROJECT"-proxy-router
+  - docker push "$DOCKER_ID"/"$PROJECT"-server
