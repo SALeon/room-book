@@ -1,0 +1,28 @@
+{
+  "AWSEBDokcerrunVersion": 2,
+  "containerDefinition": [
+    {
+      "name": "client",
+      "image": "leonsab/room-book-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "leonsab/room-book-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "router",
+      "image": "leonsab/room-book-proxy-router",
+      "hostname": "router",
+      "essential": true,
+      "portMappings": [{
+        "hostPort": 80,
+        "containerPort": 80
+      }],
+      "links": ["client", "server"]
+    }
+  ]
+}
