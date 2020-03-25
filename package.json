@@ -14,13 +14,8 @@
     "fix-server": "cd server && npm run eslint-fix && cd ..",
     "tests": "cd client && npm run test && cd .."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://leon_sab@bitbucket.org/leon_sab/room-book.git"
-  },
   "author": "Siarhei Leanavets",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/leon_sab/room-book#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",

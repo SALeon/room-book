@@ -11,13 +11,8 @@
     "mongo-stop": "docker stop mongo_db",
     "eslint-fix": "../node_modules/.bin/eslint --fix ./ --ext .js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://leon_sab@bitbucket.org/leon_sab/room-book.git"
-  },
   "author": "Siarhei Leanavets",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/leon_sab/room-book#readme",
   "engines": {
     "node": ">=11.6.0"
   },
